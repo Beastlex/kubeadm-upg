@@ -12,7 +12,7 @@
 
 - name: Install kubeadm
   become: true
-  ansible.bultin.apt:
+  ansible.builtin.apt:
     name: "kubeadm={{ upgrade_version }}-00"
     state: present
     update-cache: yes
