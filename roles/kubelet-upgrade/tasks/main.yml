@@ -1,0 +1,37 @@
+- name: Drain node
+  become: true
+  kubernetes.core.k8s_drain:
+    name: {{ inventory_hostname }}
+    state: drain
+    kubeconfig: /etc/kubernetes/admin.config
+    delete_options:
+      terminate_grace_period: 60
+      ignore_daemonsets: yes
+
+- name: Install kubelet and kubeadm
+  become: true
+  ansible.bultin.apt:
+    name: "{{ item }}"
+    state: present
+    update-cache: yes
+  loop:
+    - "kubelet={{ upgrade_version }}-00"
+    - "kubectl={{ upgrade_version }}-00"
+
+- name: Restart kubelet (systemctl)
+  become: true
+  ansible.builtin.systemd:
+    state: restarted
+    name: kubelet
+    daemon_reload: yes
+
+- name: Uncordon node
+  become: true
+  kubernetes.core.k8s_drain:
+    name: {{ inventory_hostname }}
+    state: uncordon
+    kubeconfig: /etc/kubernetes/admin.config
+
+- name: Pause before next node
+  pause:
+    seconds: 60

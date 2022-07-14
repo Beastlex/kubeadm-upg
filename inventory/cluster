@@ -1,0 +1,3 @@
+[k8s-masters]
+<hostname> ansible_usehost=<ip>
+[k8s-workers]

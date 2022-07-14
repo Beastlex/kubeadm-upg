@@ -1,0 +1,7 @@
+- name: Run kubeadm upgrade
+  expect:
+    command: "kubeadm upgrade apply v{{ upgrade_version }}"
+    echo: yes
+    timeout: 250
+    responses:
+      upgrade?: "y"
