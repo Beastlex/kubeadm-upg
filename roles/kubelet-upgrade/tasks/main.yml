@@ -1,7 +1,7 @@
 - name: Drain node
   become: true
   kubernetes.core.k8s_drain:
-    name: {{ inventory_hostname }}
+    name: "{{ inventory_hostname }}"
     state: drain
     kubeconfig: /etc/kubernetes/admin.config
     delete_options:
@@ -28,7 +28,7 @@
 - name: Uncordon node
   become: true
   kubernetes.core.k8s_drain:
-    name: {{ inventory_hostname }}
+    name: "{{ inventory_hostname }}"
     state: uncordon
     kubeconfig: /etc/kubernetes/admin.config
 
