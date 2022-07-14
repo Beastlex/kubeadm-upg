@@ -10,7 +10,7 @@
 
 - name: Install kubelet and kubeadm
   become: true
-  ansible.bultin.apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
     update-cache: yes
