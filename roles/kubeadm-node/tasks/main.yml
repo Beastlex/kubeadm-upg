@@ -1,7 +1,7 @@
 - name: Run kubeadm upgrade
   become: true
   expect:
-    command: "kubeadm upgrade apply v{{ upgrade_version }}"
+    command: "kubeadm upgrade node"
     echo: yes
     timeout: 250
     responses:
