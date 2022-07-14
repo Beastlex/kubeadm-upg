@@ -1,0 +1,26 @@
+- hosts: k8s-masters[0]
+  become: yes
+  vars:
+    upgrade_version: 1.21.14
+  roles:
+    - kubeadm-upgrade
+    - kubeadm-apply
+    - kebelet-upgrade
+
+- hosts: k8s-masters[1:]
+  become: yes
+  vars:
+    upgrade_version: 1.21.14
+  roles:
+    - kubeadm-upgrade
+    - kubeadm-node
+    - kubelet-upgrade
+
+- hosts: k8s-workers
+  become: yes
+  vars:
+    upgrade_version: 1.21.14
+  roles:
+    - kubeadm-upgrade
+    - kubeadm-node
+    - kubelet-upgrade
