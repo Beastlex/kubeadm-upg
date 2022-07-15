@@ -1,3 +1,8 @@
+- name: Install kubernetes python package
+  become: true
+  ansible.builtin.pip:
+    name: kubernetes
+
 - name: Drain node
   become: true
   kubernetes.core.k8s_drain:
