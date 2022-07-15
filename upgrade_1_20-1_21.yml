@@ -8,6 +8,7 @@
     - kubelet-upgrade
 
 - hosts: k8s-masters[1:]
+  serial: 1
   become: yes
   vars:
     upgrade_version: 1.21.14
@@ -17,6 +18,7 @@
     - kubelet-upgrade
 
 - hosts: k8s-workers
+  serial: 1
   become: yes
   vars:
     upgrade_version: 1.21.14

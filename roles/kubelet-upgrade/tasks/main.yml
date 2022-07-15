@@ -1,3 +1,10 @@
+- name: Install pip3 package
+  become: true
+  ansible.builtin.apt:
+    name: "pip3"
+    state: present
+    update-cache: yes
+
 - name: Install kubernetes python package
   become: true
   ansible.builtin.pip:
