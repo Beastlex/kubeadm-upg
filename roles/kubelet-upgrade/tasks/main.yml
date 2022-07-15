@@ -3,7 +3,7 @@
   kubernetes.core.k8s_drain:
     name: "{{ inventory_hostname }}"
     state: drain
-    kubeconfig: /etc/kubernetes/admin.config
+    kubeconfig: /etc/kubernetes/admin.conf
     delete_options:
       terminate_grace_period: 60
       ignore_daemonsets: yes
@@ -30,7 +30,7 @@
   kubernetes.core.k8s_drain:
     name: "{{ inventory_hostname }}"
     state: uncordon
-    kubeconfig: /etc/kubernetes/admin.config
+    kubeconfig: /etc/kubernetes/admin.conf
 
 - name: Pause before next node
   pause:
