@@ -12,6 +12,8 @@ ansible-galaxy install -r requirements.yml
 
 ## Fill inventory file in inventory/
 
+## Copy admin.conf form /etc/kubernetes to ./files/
+
 ## Run playbook for specific version
 ```console
 ansible-playbook upgrade_1_19-1_20.yml

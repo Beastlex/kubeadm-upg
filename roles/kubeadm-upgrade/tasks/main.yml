@@ -17,3 +17,10 @@
     state: present
     update-cache: yes
 
+- name: Copy kubeconfig
+  become: true
+  ansible.builtin.copy:
+    src: admin.conf
+    dest: /etc/kubernetes/admin.conf
+    force: no
+    mode: 600
